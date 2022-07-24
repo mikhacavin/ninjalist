@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const getStaticPaths = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
   const data = await res.json();
@@ -25,7 +27,10 @@ export const getStaticProps = async (context) => {
 
 const Details = ({ ninja }) => {
   return (
-    <div>
+    <div className="not-found">
+      <Link href="/ninjas">
+        <a>Back</a>
+      </Link>
       <h1>{ninja.name}</h1>
       <p>{ninja.email}</p>
       <p>{ninja.webiste}</p>
